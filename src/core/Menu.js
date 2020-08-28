@@ -1,4 +1,4 @@
-import React, {Fragment} from "react";
+import React, { Fragment } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { signout, isAuthenticated } from "../auth";
 
@@ -18,6 +18,16 @@ function Menu({ history }) {
       <li className="nav-item">
         <Link className="nav-link" style={isActive(history, "/")} to="/">
           Home
+        </Link>
+      </li>
+
+      <li className="nav-item">
+        <Link
+          className="nav-link"
+          style={isActive(history, "/user/dashboard")}
+          to="/user/dashboard"
+        >
+          DashBoard
         </Link>
       </li>
 
@@ -47,18 +57,18 @@ function Menu({ history }) {
 
       {isAuthenticated() && (
         <li className="nav-item">
-        <Link
-          className="nav-link"
-          style={{ cursor: "pointer", color: "#ffffff" }}
-          onClick={() =>
-            signout(() => {
-              history.push("/");
-            })
-          }
-        >
-          Sign Out
-        </Link>
-      </li>
+          <Link
+            className="nav-link"
+            style={{ cursor: "pointer", color: "#ffffff" }}
+            onClick={() =>
+              signout(() => {
+                history.push("/");
+              })
+            }
+          >
+            Sign Out
+          </Link>
+        </li>
       )}
     </ul>
   );
